@@ -15,9 +15,10 @@ import { NotFoundComponent } from './Components/not-found/not-found.component';
 
 export const routes: Routes = [
   {
-    path: 'blank',
+    path: '',
     component: BlankComponent,
     children: [
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
       { path: 'cart', component: CartComponent },
       { path: 'products', component: ProductsComponent },
@@ -28,9 +29,10 @@ export const routes: Routes = [
     ],
   },
   {
-    path: 'auth',
+    path: '',
     component: AuthComponent,
     children: [
+      { path: 'login', redirectTo: 'login', pathMatch: 'full' },
       { path: 'login', component: LogInComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'forget', component: ForgetPasswordComponent },
