@@ -1,9 +1,11 @@
 {
   "cSpell.words": [
     "allorders",
+    "daisyui",
     "fortawesome",
     "primeicons",
     "primeng",
     "souqmart"
-  ]
+  ],
+  "cSpell.enableFiletypes": ["!typescript"]
 }
