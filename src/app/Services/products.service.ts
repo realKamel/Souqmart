@@ -1,19 +1,17 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { environment } from "../../environments/environment";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from '../Environments/environment';
 
 @Injectable({
-	providedIn: "root",
+  providedIn: 'root',
 })
 export class ProductsService {
-	constructor(private _HttpClient: HttpClient) {}
-	getAllProducts(): Observable<any> {
-		return this._HttpClient.get(`${environment.BaseUrl}/api/v1/products`);
-	}
-	getSpcificProduct(id: string |null): Observable<any> {
-		return this._HttpClient.get(
-			`${environment.BaseUrl}/api/v1/products/${id}`
-		);
-	}
+  constructor(private _HttpClient: HttpClient) {}
+  getAllProducts(): Observable<any> {
+    return this._HttpClient.get(`${environment.BaseUrl}/api/v1/products`);
+  }
+  getSpcificProduct(id: string | null): Observable<any> {
+    return this._HttpClient.get(`${environment.BaseUrl}/api/v1/products/${id}`);
+  }
 }
