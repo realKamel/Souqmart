@@ -14,6 +14,7 @@ import {
   withInterceptors,
 } from '@angular/common/http';
 import { errorInterceptor } from './Interceptors/error.interceptor';
+import { provideToastr } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -25,5 +26,11 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideAnimations(),
     provideHttpClient(withFetch(), withInterceptors([errorInterceptor])),
+    provideToastr({
+      newestOnTop: true,
+      preventDuplicates: true,
+      countDuplicates: true,
+      closeButton: true,
+    }),
   ],
 };
