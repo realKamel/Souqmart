@@ -1,20 +1,14 @@
 /* Import FontAwesome and PrimeIcons */
 @import url('../node_modules/@fortawesome/fontawesome-free/css/all.min.css');
 @import url('../node_modules/primeicons/primeicons.css');
+@import url('keen-slider/keen-slider.min.css');
 
-@import url('../node_modules/primeng/resources/themes/lara-light-blue/theme.css') layer(primeng);
-@import url('../node_modules/primeng/resources/primeng.css') layer(primeng);
 /* i turned off the preflight in tailwind config */
-@layer tailwind-base, primeng, tailwind-components, tailwind-utilities;
 
-@layer tailwind-base {
-  @tailwind base;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@layer tailwind-components {
-  @tailwind components;
-}
-
-@layer tailwind-utilities {
-  @tailwind utilities;
+body {
+  @apply bg-gray-200
 }
