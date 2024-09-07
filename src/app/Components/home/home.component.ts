@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   readonly _platform = inject(PLATFORM_ID);
   ngOnInit(): void {
     this.isLoading = true;
-    this._CategoriesService
+    /* this._CategoriesService
       .getAllCategories()
       .pipe(
         finalize(() => (this.isLoading = false)),
@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       )
       .subscribe((res) => {
         this.products = res.data;
-      });
+      }); */
   }
   // FIXME add nav and dots to slider
   ngAfterViewInit() {

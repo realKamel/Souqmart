@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Souqmart": {
+    "SOUQ": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,14 +13,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/souqmart",
+            "outputPath": "dist/SOUQ",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.css"],
-            "scripts": ["./node_modules/material-ripple-effects/ripple.js"],
+            "scripts": ["./node_modules/flowbite/dist/flowbite.min.js"],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
@@ -55,10 +55,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Souqmart:build:production"
+              "buildTarget": "SOUQ:build:production"
             },
             "development": {
-              "buildTarget": "Souqmart:build:development"
+              "buildTarget": "SOUQ:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -66,7 +66,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "Souqmart:build"
+            "buildTarget": "SOUQ:build"
           }
         },
         "test": {

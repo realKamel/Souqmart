@@ -2,11 +2,13 @@
   "cSpell.words": [
     "allorders",
     "daisyui",
+    "flowbite",
     "fortawesome",
     "primeicons",
     "primeng",
-    "souqmart",
-    "toastr"
+    "SOUQ",
+    "toastr",
+    "wght"
   ],
   "cSpell.enableFiletypes": ["!typescript"]
 }

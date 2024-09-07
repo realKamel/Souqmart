@@ -7,7 +7,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   const _ToastrService = inject(ToastrService);
   return next(req).pipe(
     catchError((err: HttpErrorResponse) => {
-      _ToastrService.error(err.error.message, 'Souqmart');
+      _ToastrService.error(err.error.message, 'SOUQ');
       console.error(err);
       return throwError(() => {
         return err;
