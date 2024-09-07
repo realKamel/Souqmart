@@ -1,14 +1,14 @@
 /** @type {import('tailwindcss').Config} */
-const withMT = require( "@material-tailwind/html/utils/withMT" );
-module.exports = withMT( {
-  content: [ "./src/**/*.{html,ts}", ],
+module.exports = {
+  content: [ "./src/**/*.{html,ts}", "./node_modules/flowbite/**/*.js" ],
   corePlugins: {
+    preflight: false
   }
   , theme: {
     extend: {},
   },
   plugins: [
-    require( 'daisyui' ),
+    require( 'flowbite/plugin' )
   ],
-} );
+};
 

@@ -1,9 +1,7 @@
 /* Import FontAwesome and PrimeIcons */
 @import url('../node_modules/@fortawesome/fontawesome-free/css/all.min.css');
-@import url('../node_modules/primeicons/primeicons.css');
-@import url('keen-slider/keen-slider.min.css');
+@import url('../node_modules/keen-slider/keen-slider.min.css');
 
-/* i turned off the preflight in tailwind config */
 @font-face {
   font-family: Montserrat;
   src: url('./assets/Fonts/Montserrat-VariableFont_wght.ttf') format('ttf');
