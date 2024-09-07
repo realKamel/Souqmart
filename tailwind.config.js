@@ -1,12 +1,14 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const withMT = require( "@material-tailwind/html/utils/withMT" );
+module.exports = withMT( {
   content: [ "./src/**/*.{html,ts}", ],
   corePlugins: {
-    preflight: false,
   }
   , theme: {
     extend: {},
   },
-  plugins: [],
-}
+  plugins: [
+    require( 'daisyui' ),
+  ],
+} );
 
