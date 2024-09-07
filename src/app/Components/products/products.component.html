@@ -1,38 +1,51 @@
-<section class="mt-5 p-3">
+<section class="my-2 p-3">
   @if (isLoading) {
-  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 justify-center my-3">
+  <div
+    class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 justify-center my-3"
+  >
     @for (i of [1,2,3,4,5,6,7,8]; track $index) {
-    <div class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full animate-pulse">
+    <div
+      class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full animate-pulse"
+    >
       <div
-        class="relative grid h-56 mx-4 mt-4 overflow-hidden text-gray-700 bg-gray-300 bg-clip-border rounded-xl place-items-center">
+        class="relative grid h-56 mx-4 mt-4 overflow-hidden text-gray-700 bg-gray-300 bg-clip-border rounded-xl place-items-center"
+      >
         <i class="fa-regular fa-image fa-3x"></i>
       </div>
       <div class="p-6">
         <div
-          class="block w-56 h-3 mb-4 font-sans text-5xl antialiased font-semibold leading-tight tracking-normal bg-gray-300 rounded-full text-inherit">
+          class="block w-full h-3 mb-4 font-sans text-5xl antialiased font-semibold leading-tight tracking-normal bg-gray-300 rounded-full text-inherit"
+        >
           &nbsp;
         </div>
         <div
-          class="block w-full h-2 mb-2 font-sans text-base antialiased font-light leading-relaxed bg-gray-300 rounded-full text-inherit">
+          class="block w-full h-2 mb-2 font-sans text-base antialiased font-light leading-relaxed bg-gray-300 rounded-full text-inherit"
+        >
           &nbsp;
         </div>
         <div
-          class="block w-full h-2 mb-2 font-sans text-base antialiased font-light leading-relaxed bg-gray-300 rounded-full text-inherit">
+          class="block w-full h-2 mb-2 font-sans text-base antialiased font-light leading-relaxed bg-gray-300 rounded-full text-inherit"
+        >
           &nbsp;
         </div>
         <div
-          class="block w-full h-2 mb-2 font-sans text-base antialiased font-light leading-relaxed bg-gray-300 rounded-full text-inherit">
+          class="block w-full h-2 mb-2 font-sans text-base antialiased font-light leading-relaxed bg-gray-300 rounded-full text-inherit"
+        >
           &nbsp;
         </div>
         <div
-          class="block w-full h-2 mb-2 font-sans text-base antialiased font-light leading-relaxed bg-gray-300 rounded-full text-inherit">
+          class="block w-full h-2 mb-2 font-sans text-base antialiased font-light leading-relaxed bg-gray-300 rounded-full text-inherit"
+        >
           &nbsp;
         </div>
       </div>
       <div class="p-6 pt-0">
-        <button disabled="" tabindex="-1"
+        <button
+          disabled=""
+          tabindex="-1"
           class="w-full align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg text-white shadow-gray-900/10 hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none h-8 bg-gray-300 shadow-none hover:shadow-none"
-          type="button">
+          type="button"
+        >
           &nbsp;
         </button>
       </div>
@@ -41,13 +54,23 @@
   </div>
 
   } @else {
-  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 justify-center">
+  <div
+    class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 justify-center"
+  >
     @for (item of Products(); track item._id) {
 
-    <div class="cursor-pointer relative grid bg-white shadow border border-slate-200 rounded-lg w-full">
+    <div
+      class="cursor-pointer relative grid bg-white shadow border border-slate-200 rounded-lg w-full"
+    >
       <div [routerLink]="['/product', item._id]">
-        <div class="relative p-2.5 h-32 sm:h-40 md:h-80 overflow-hidden rounded bg-clip-border">
-          <img [src]="item.imageCover" [alt]="item.title" class="size-full object-cover object-center rounded" />
+        <div
+          class="relative p-2.5 h-32 sm:h-40 md:h-80 overflow-hidden rounded bg-clip-border"
+        >
+          <img
+            [src]="item.imageCover"
+            [alt]="item.title"
+            class="size-full object-cover object-center rounded"
+          />
         </div>
         <div class="p-4">
           <div class="mb-2 flex items-center justify-between">
@@ -71,8 +94,10 @@
               @for (i of [1,2,3,4,5].slice(0,item.ratingsAverage); track $index)
               {
               <span>
-                <i class="fa-solid fa-star w-6 h-6 text-yellow-700 cursor-pointer"></i> </span>} @for (i of
-              [1,2,3,4,5].slice(item.ratingsAverage,5); track
+                <i
+                  class="fa-solid fa-star w-6 h-6 text-yellow-700 cursor-pointer"
+                ></i> </span
+              >} @for (i of [1,2,3,4,5].slice(item.ratingsAverage,5); track
               $index) {
               <span>
                 <i class="fa-regular fa-star w-6 h-6 cursor-pointer"></i>
@@ -81,13 +106,16 @@
             </div>
             {{ item.ratingsAverage }}
           </div>
-          <p class="block font-sans text-xs antialiased font-medium leading-relaxed text-blue-gray-500">
+          <p
+            class="block font-sans text-xs antialiased font-medium leading-relaxed text-blue-gray-500"
+          >
             Based on {{ item.ratingsQuantity }} Reviews
           </p>
         </div>
         <button
           class="flex justify-center items-center gap-2 rounded-md w-full mt-6 bg-blue-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-blue-700 focus:shadow-none active:bg-blue-700 hover:bg-blue-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-          type="button">
+          type="button"
+        >
           Add to Cart <i class="fa-solid fa-cart-plus"></i>
         </button>
       </div>
