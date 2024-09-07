@@ -13,6 +13,9 @@ import KeenSlider, { KeenSliderInstance } from 'keen-slider';
 import { isPlatformBrowser } from '@angular/common';
 import { ProductsComponent } from '../products/products.component';
 import { ICategory } from '../../Interfaces/icategory';
+import { ToastrService } from 'ngx-toastr';
+import { finalize, Subject, takeUntil } from 'rxjs';
+const animation = { duration: 5000, easing: (t: number) => t };
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -21,23 +24,34 @@ import { ICategory } from '../../Interfaces/icategory';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
-  readonly _CategoriesService = inject(CategoriesService);
+  private readonly _CategoriesService = inject(CategoriesService);
+  readonly _ToastrService = inject(ToastrService);
   products!: ICategory[];
   @ViewChild('sliderRef') sliderRef!: ElementRef<HTMLElement>;
   currentSlide: number = 1;
-  dotHelper: Array<Number> = [];
+  private destory$ = new Subject<void>();
+  isLoading = false;
   slider!: KeenSliderInstance;
   readonly _platform = inject(PLATFORM_ID);
   ngOnInit(): void {
-    this._CategoriesService.getAllCategories().subscribe((res) => {
-      this.products = res.data;
-    });
+    this.isLoading = true;
+    this._CategoriesService
+      .getAllCategories()
+      .pipe(
+        finalize(() => (this.isLoading = false)),
+        takeUntil(this.destory$)
+      )
+      .subscribe((res) => {
+        this.products = res.data;
+      });
   }
+  // FIXME add nav and dots to slider
   ngAfterViewInit() {
     if (isPlatformBrowser(this._platform)) {
       this.slider = new KeenSlider(this.sliderRef.nativeElement, {
         loop: true,
         mode: 'free',
+        drag: true,
         slides: { origin: 'center', perView: 2.5, spacing: 10 },
         range: {
           min: -5,
@@ -58,10 +72,16 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
             slides: { perView: 6, spacing: 5 },
           },
         },
-        renderMode: 'precision',
+        renderMode: 'performance',
+        created: (s) => {
+          s.next();
+        },
       });
     }
   }
 
-  ngOnDestroy() {}
+  ngOnDestroy() {
+    this.destory$?.next();
+    this.destory$?.complete();
+  }
 }

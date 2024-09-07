@@ -5,7 +5,8 @@
     "fortawesome",
     "primeicons",
     "primeng",
-    "souqmart"
+    "souqmart",
+    "toastr"
   ],
   "cSpell.enableFiletypes": ["!typescript"]
 }

@@ -2,22 +2,31 @@
   <div class="bg-white shadow border border-slate-200 rounded-lg">
     <div class="navigation-wrapper">
       <div class="keen-slider" #sliderRef>
-        @for (item of products; track $index) {
-        <div class="keen-slider__slide">
+        @if (isLoading) { @for (i of [1,2,3,4,5,6,7]; track $index) {
+        <div class="keen-slider__slide cursor-pointer">
           <div class="flex justify-center items-center flex-wrap">
+            <div class="flex justify-center items-center rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 p-1">
+              <div class="grid size-40 animate-pulse place-items-center rounded-lg bg-gray-300">
+                <i class="fa-regular fa-image fa-3x"></i>
+              </div>
+            </div>
             <div
-              class="flex justify-center items-center rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 p-1"
-            >
-              <img
-                [src]="item.image"
-                class="size-40 object-cover object-center rounded-full"
-                [alt]="item.name"
-              />
+              class="block w-40 h-5 mb-4 font-sans text-5xl antialiased font-semibold leading-tight tracking-normal bg-gray-300 rounded-full text-inherit">
+              &nbsp;
+            </div>
+          </div>
+        </div>
+        }
+        }@else { @for (item of products; track item._id) {
+        <div class="keen-slider__slide cursor-pointer">
+          <div class="flex justify-center items-center flex-wrap">
+            <div class="flex justify-center items-center rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 p-1">
+              <img [src]="item.image" class="size-40 object-cover object-center rounded-full" [alt]="item.name" />
             </div>
             <p class="text-center w-full">{{ item.name }}</p>
           </div>
         </div>
-        }
+        } }
       </div>
     </div>
   </div>
