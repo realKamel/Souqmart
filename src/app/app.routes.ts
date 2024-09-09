@@ -12,31 +12,35 @@ import { LogInComponent } from './Components/log-in/log-in.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { ForgetPasswordComponent } from './Components/forget-password/forget-password.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
+import { UserProfileComponent } from './Components/user-profile/user-profile.component';
+import { CategoriesComponent } from './Components/categories/categories.component';
 
 export const routes: Routes = [
-  {
-    path: '',
-    component: BlankComponent,
-    children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent },
-      { path: 'cart', component: CartComponent },
-      { path: 'products', component: ProductsComponent },
-      { path: 'product/:id', component: ProductDetailsComponent },
-      { path: 'wishlist', component: WishlistComponent },
-      { path: 'checkout/:cart_id', component: CheckOutComponent },
-      { path: 'allorders', component: AllOrdersComponent },
-    ],
-  },
-  {
-    path: '',
-    component: AuthComponent,
-    children: [
-      { path: 'login', redirectTo: 'login', pathMatch: 'full' },
-      { path: 'login', component: LogInComponent },
-      { path: 'register', component: RegisterComponent },
-      { path: 'forget', component: ForgetPasswordComponent },
-    ],
-  },
-  { path: '**', component: NotFoundComponent },
+	{
+		path: '',
+		component: BlankComponent,
+		children: [
+			{ path: '', redirectTo: 'home', pathMatch: 'full' },
+			{ path: 'home', component: HomeComponent },
+			{ path: 'cart', component: CartComponent },
+			{ path: 'products', component: ProductsComponent },
+			{ path: 'product/:id', component: ProductDetailsComponent },
+			{ path: 'wishlist', component: WishlistComponent },
+			{ path: 'checkout/:cart_id', component: CheckOutComponent },
+			{ path: 'allorders', component: AllOrdersComponent },
+			{ path: 'profile', component: UserProfileComponent },
+			{ path: 'categories', component: CategoriesComponent },
+		],
+	},
+	{
+		path: '',
+		component: AuthComponent,
+		children: [
+			{ path: 'login', redirectTo: 'login', pathMatch: 'full' },
+			{ path: 'login', component: LogInComponent },
+			{ path: 'register', component: RegisterComponent },
+			{ path: 'forget', component: ForgetPasswordComponent },
+		],
+	},
+	{ path: '**', component: NotFoundComponent },
 ];
