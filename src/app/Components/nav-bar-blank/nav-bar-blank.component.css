@@ -4,7 +4,7 @@
 }
 
 .active__tab::before {
-  @apply top-0 left-1/2 -translate-x-1/2 transition-all duration-500 bg-blue-600 absolute w-10 h-[.375rem] rounded-b;
+  @apply top-0 left-1/2 -translate-x-1/2 transition-all duration-500 bg-blue-600 absolute w-12 h-[.3rem] rounded-b;
   content: "";
   animation-name: tab;
   animation-duration: 400ms;
