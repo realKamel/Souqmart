@@ -1,14 +1,15 @@
 {
-  "cSpell.words": [
-    "allorders",
-    "daisyui",
-    "flowbite",
-    "fortawesome",
-    "primeicons",
-    "primeng",
-    "SOUQ",
-    "toastr",
-    "wght"
-  ],
-  "cSpell.enableFiletypes": ["!typescript"]
+	"cSpell.words": [
+		"allorders",
+		"daisyui",
+		"devkit",
+		"flowbite",
+		"fortawesome",
+		"primeicons",
+		"primeng",
+		"SOUQ",
+		"toastr",
+		"wght"
+	],
+	"cSpell.enableFiletypes": ["!typescript"]
 }

@@ -21,6 +21,7 @@ export const routes: Routes = [
 		component: BlankComponent,
 		children: [
 			{ path: '', redirectTo: 'home', pathMatch: 'full' },
+			{ path: 'Home', redirectTo: 'home', pathMatch: 'full' },
 			{ path: 'home', component: HomeComponent },
 			{ path: 'cart', component: CartComponent },
 			{ path: 'products', component: ProductsComponent },

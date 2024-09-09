@@ -1,22 +1,8 @@
+.my-active-tab {
+	@apply transition-all duration-300 absolute -top-1/4 left-1/2 -translate-x-1/2 bg-blue-500 w-16 h-[0.3rem] rounded-b;
+	content: '';
+}
+
 .active__tab {
-  @apply text-blue-600 relative overflow-hidden;
-  transition: all 0.5s;
-}
-
-.active__tab::before {
-  @apply top-0 left-1/2 -translate-x-1/2 transition-all duration-500 bg-blue-600 absolute w-12 h-[.3rem] rounded-b;
-  content: "";
-  animation-name: tab;
-  animation-duration: 400ms;
-  animation-timing-function: ease-out;
-}
-
-@keyframes tab {
-  0% {
-    top: -10px;
-  }
-
-  100% {
-    top: 0;
-  }
+	@apply top-0;
 }
