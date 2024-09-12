@@ -32,63 +32,138 @@
 				<h2 class="text-2xl font-bold text-gray-900 dark:text-white">
 					Sign in
 				</h2>
-				<form class="mt-8 space-y-6">
-					<div class="relative">
-						<input
-							type="email"
-							id="floating_email"
-							class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-							placeholder=" "
-						/>
-						<label
-							for="floating_email"
-							class="absolute text-md text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-							>Email</label
-						>
-					</div>
-
-					<div class="relative">
-						<input
-							type="password"
-							id="floating_password"
-							class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-							placeholder=" "
-						/>
-						<label
-							for="floating_password"
-							class="absolute text-md text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-							>Password</label
-						>
-					</div>
-					<div class="flex items-start">
-						<div class="flex items-center h-5">
+				<form
+					class="mt-8 space-y-8"
+					(ngSubmit)="loginUser()"
+					[formGroup]="loginForm"
+				>
+					<div>
+						<div class="relative">
 							<input
-								id="remember"
-								aria-describedby="remember"
-								name="remember"
-								type="checkbox"
-								class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
-								required
+								formControlName="email"
+								type="email"
+								id="floating_email"
+								class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+								placeholder=" "
+								[ngClass]="{
+									'dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:border-red-600':
+										(loginForm.get('email')?.errors &&
+											loginForm.get('email')?.touched) ||
+										(loginForm.get('email')?.errors &&
+											loginForm.get('email')?.dirty),
+									'border-gray-300 dark:border-gray-600 dark:focus:border-blue-500 focus:border-blue-600':
+										!(
+											(loginForm.get('email')?.errors &&
+												loginForm.get('email')
+													?.touched) ||
+											(loginForm.get('email')?.errors &&
+												loginForm.get('email')?.dirty)
+										)
+								}"
 							/>
-						</div>
-						<div class="ms-3 text-sm">
 							<label
-								for="remember"
-								class="font-medium text-gray-500 dark:text-gray-400"
-								>Remember this device</label
+								for="floating_email"
+								[ngClass]="{
+									'text-red-600 dark:text-red-800  peer-focus:text-red-600 peer-focus:dark:text-red-500':
+										(loginForm.get('email')?.errors &&
+											loginForm.get('email')?.touched) ||
+										(loginForm.get('email')?.errors &&
+											loginForm.get('email')?.dirty)
+								}"
+								class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+								>Your email</label
 							>
 						</div>
-						<a
-							routerLink="/forget"
-							class="ms-auto text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"
-							>Forget Password?</a
+						@if ((loginForm.get('email')?.errors&&
+						loginForm.get('email')?.touched)||(loginForm.get('email')?.errors&&
+						loginForm.get('email')?.dirty)) {
+						<p
+							id="outlined_error_help"
+							class="mt-2 text-xs text-red-600 dark:text-red-400"
 						>
+							@if (loginForm.get('email')?.getError('required'))
+							{<span class="font-medium"
+								>Your Email is required</span
+							>} @if (loginForm.get('email')?.getError('email'))
+							{<span class="font-medium"
+								>Your Email Must be like mail&#64;mail.com</span
+							>}
+						</p>
+						}
 					</div>
+
+					<div>
+						<div class="relative">
+							<input
+								formControlName="password"
+								type="password"
+								autocomplete
+								id="floating_password"
+								class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+								placeholder=" "
+								[ngClass]="{
+									'dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:border-red-600':
+										(loginForm.get('password')?.errors &&
+											loginForm.get('password')
+												?.touched) ||
+										(loginForm.get('password')?.errors &&
+											loginForm.get('password')?.dirty),
+									'border-gray-300 dark:border-gray-600 dark:focus:border-blue-500 focus:border-blue-600':
+										!(
+											(loginForm.get('password')
+												?.errors &&
+												loginForm.get('password')
+													?.touched) ||
+											(loginForm.get('password')
+												?.errors &&
+												loginForm.get('password')
+													?.dirty)
+										)
+								}"
+							/>
+							<label
+								for="floating_password"
+								[ngClass]="{
+									'text-red-600 dark:text-red-800  peer-focus:text-red-600 peer-focus:dark:text-red-500':
+										(loginForm.get('password')?.errors &&
+											loginForm.get('password')
+												?.touched) ||
+										(loginForm.get('password')?.errors &&
+											loginForm.get('password')?.dirty)
+								}"
+								class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+								>Your password</label
+							>
+						</div>
+						@if ((loginForm.get('password')?.errors&&
+						loginForm.get('password')?.touched)||(loginForm.get('password')?.errors&&
+						loginForm.get('password')?.dirty)) {
+						<p
+							id="outlined_error_help"
+							class="mt-2 text-xs text-red-600 dark:text-red-400"
+						>
+							@if
+							(loginForm.get('password')?.getError('required'))
+							{<span class="font-medium"
+								>Your password is required</span
+							>} @if
+							(loginForm.get('password')?.getError('pattern'))
+							{<span class="font-medium"
+								>Your password Must at least 6 characters</span
+							>}
+						</p>
+						}
+					</div>
+
 					<button
+						[disabled]="loginForm.invalid"
 						type="submit"
-						class="w-full px-5 py-3 text-base font-medium text-center text-white bg-blue-600 transition-all rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+						class="w-full px-5 py-3 text-base disabled:bg-gray-500 disabled:cursor-not-allowed font-medium text-center text-white bg-blue-600 transition-all rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
 					>
-						Login
+						@if (isLoading()) {<i
+							class="fa-solid fa-spinner fa-spin fa-lg text-white"
+						></i>
+						}@else {Login}
 					</button>
 					<div
 						class="text-sm font-medium text-gray-900 dark:text-white"

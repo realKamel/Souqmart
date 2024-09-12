@@ -244,21 +244,16 @@
 								>Confirm password</label
 							>
 						</div>
-						@if ((registerForm.errors&&
-						registerForm.get('rePassword')?.touched)||(registerForm.errors&&
-						registerForm.get('rePassword')?.dirty)) {
+						@if (registerForm.getError('mismatch') &&
+						(registerForm.get('rePassword')?.touched
+						||registerForm.get('rePassword')?.dirty) ) {
 						<p
 							id="outlined_error_help"
 							class="mt-2 text-xs text-red-600 dark:text-red-400"
 						>
-							@if
-							(registerForm.get('rePassword')?.getError('required'))
-							{<span class="font-medium"
-								>Your rePassword is required</span
-							>} @if (registerForm.getError('mismatch')) {<span
-								class="font-medium"
+							<span class="font-medium"
 								>Password Does not match</span
-							>}
+							>
 						</p>
 						}
 					</div>
