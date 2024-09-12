@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy, signal } from '@angular/core';
 import {
 	AbstractControl,
 	FormControl,
@@ -6,9 +6,11 @@ import {
 	ReactiveFormsModule,
 	Validators,
 } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../Services/auth.service';
 import { NgClass } from '@angular/common';
+import { finalize, Subject, takeUntil } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
 	selector: 'app-register',
@@ -17,8 +19,12 @@ import { NgClass } from '@angular/common';
 	templateUrl: './register.component.html',
 	styleUrl: './register.component.css',
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnDestroy {
 	readonly _AuthService = inject(AuthService);
+	readonly _ToastrService = inject(ToastrService);
+	readonly _Router = inject(Router);
+	isLoading = signal(false);
+	private destroy$ = new Subject<void>();
 	registerForm: FormGroup = new FormGroup(
 		{
 			name: new FormControl(null, [
@@ -49,6 +55,27 @@ export class RegisterComponent {
 	}
 
 	registerUser() {
-		console.log(this.registerForm);
+		if (this.registerForm.valid) {
+			this.isLoading.set(true);
+			this._AuthService
+				.signUp(this.registerForm.value)
+				.pipe(
+					finalize(() => this.isLoading.set(false)),
+					takeUntil(this.destroy$)
+				)
+				.subscribe({
+					next: (res) => {
+						this._AuthService.setUserToken(res.token);
+						this._ToastrService.success(res.message, 'Souq');
+						this._Router.navigate(['/home']);
+					},
+				});
+		} else {
+			this.registerForm.markAllAsTouched();
+		}
+	}
+	ngOnDestroy(): void {
+		this.destroy$.next();
+		this.destroy$.complete();
 	}
 }
