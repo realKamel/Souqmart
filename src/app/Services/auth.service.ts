@@ -13,52 +13,62 @@ export class AuthService {
 	private _HttpClient = inject(HttpClient);
 	userData = signal({} as IUser);
 
-	signUp(userDate: object): Observable<any> {
+	signUp(userData: object): Observable<any> {
 		return this._HttpClient.post(
 			`${environment.BaseUrl}/api/v1/auth/signup`,
-			userDate
+			userData
 		);
 	}
 
-	signIn(userDate: object): Observable<any> {
+	signIn(userData: object): Observable<any> {
 		return this._HttpClient.post(
 			`${environment.BaseUrl}/api/v1/auth/signin`,
-			userDate
-		);
-	}
-	forgetPassword(userDate: object): Observable<any> {
-		return this._HttpClient.post(
-			`${environment.BaseUrl}/api/v1/auth/forgotPasswords`,
-			userDate
-		);
-	}
-	verifyResetCode(userDate: object): Observable<any> {
-		return this._HttpClient.post(
-			`${environment.BaseUrl}/api/v1/auth/verifyResetCode`,
-			userDate
+			userData
 		);
 	}
 
-	resetPassword(userDate: object): Observable<any> {
+	forgetPassword(userData: object): Observable<any> {
+		return this._HttpClient.post(
+			`${environment.BaseUrl}/api/v1/auth/forgotPasswords`,
+			userData
+		);
+	}
+
+	verifyResetCode(userData: object): Observable<any> {
+		return this._HttpClient.post(
+			`${environment.BaseUrl}/api/v1/auth/verifyResetCode`,
+			userData
+		);
+	}
+
+	resetPassword(userData: object): Observable<any> {
 		return this._HttpClient.put(
 			`${environment.BaseUrl}/api/v1/auth/resetPassword`,
-			userDate
+			userData
 		);
 	}
 
 	setUserToken(s: string) {
-		localStorage.setItem('userToken', s);
-		this.userData.set(jwtDecode(s));
+		if (localStorage !== undefined) {
+			localStorage.setItem('userToken', s);
+			this.userData.set(jwtDecode(s));
+		}
 	}
+
 	getUserToken() {
-		const t = localStorage.getItem('userToken');
-		if (t !== null) {
-			this.userData.set(jwtDecode(t));
+		let t: string | null = null;
+		if (localStorage !== undefined) {
+			t = localStorage.getItem('userToken');
+			if (t !== null) {
+				this.userData.set(jwtDecode(t));
+			}
 		}
 		return t;
 	}
 
 	deleteUserToken() {
-		localStorage.removeItem('userToken');
+		if (localStorage !== undefined) {
+			localStorage.removeItem('userToken');
+		}
 	}
 }

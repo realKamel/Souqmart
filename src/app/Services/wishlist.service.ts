@@ -1,11 +1,12 @@
-import { Observable } from "rxjs";
-import { HttpClient } from "@angular/common/http";
-import { inject, Injectable } from "@angular/core";
-import { environment } from "../../environments/environment";
-import { AuthService } from "./auth.service";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import { environment } from '../Environments/environment';
+import { AuthService } from './auth.service';
 
 @Injectable({
-	providedIn: "root",
+	providedIn: 'root',
 })
 export class WishlistService {
 	private readonly _HttpClient = inject(HttpClient);

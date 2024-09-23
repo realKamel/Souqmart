@@ -30,7 +30,8 @@
 						"prerender": true,
 						"ssr": {
 							"entry": "server.ts"
-						}
+						},
+						"aot": true
 					},
 					"configurations": {
 						"production": {
@@ -46,7 +47,8 @@
 									"maximumError": "4kb"
 								}
 							],
-							"outputHashing": "all"
+							"outputHashing": "all",
+							"aot": true
 						},
 						"development": {
 							"optimization": false,
@@ -94,6 +96,7 @@
 		}
 	},
 	"cli": {
-		"schematicCollections": ["@angular-eslint/schematics"]
+		"schematicCollections": ["@angular-eslint/schematics"],
+		"analytics": "fd305eec-6281-4906-a8d7-6a9a5b5097a3"
 	}
 }
