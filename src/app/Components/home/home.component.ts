@@ -28,14 +28,13 @@ import { SkeletonModule } from 'primeng/skeleton';
 	imports: [ProductsComponent, SkeletonModule],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.css',
-	schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-	changeDetection: ChangeDetectionStrategy.OnPush,
+	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
+	//	FIXME slider re-initlalization when hopping between routes
 	private readonly _CategoriesService = inject(CategoriesService);
 	readonly _ToastrService = inject(ToastrService);
 	readonly _PLATFORM_ID = inject(PLATFORM_ID);
-	private _Renderer2 = inject(Renderer2);
 	private _ElementRef = inject(ElementRef);
 	categorySlider: WritableSignal<ICategory[]> = signal([]);
 	private destory$ = new Subject<void>();
@@ -98,7 +97,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 			this.swiperEl?.initialize();
 			console.log('afterviweworked');
 		}
-		console.log('working:', this.swiperParams(), this.swiperEl);
 	}
 
 	ngOnDestroy() {
