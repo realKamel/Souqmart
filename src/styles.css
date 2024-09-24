@@ -1,11 +1,9 @@
 /* Import FontAwesome and PrimeIcons */
 @import url('../node_modules/@fortawesome/fontawesome-free/css/all.min.css');
-@import url('../node_modules/keen-slider/keen-slider.min.css');
 @import "primeicons/primeicons.css";
 
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
-
 @font-face {
 	font-family: Montserrat;
 	src: url('./assets/Fonts/Montserrat-VariableFont_wght.ttf') format('ttf');
@@ -205,9 +203,9 @@ Prevent `sub` and `sup` elements from affecting the line height in all browsers.
 2. Remove the margin in Firefox and Safari.
 3. Remove default padding in all browsers.
 */
-
+	/* rm input for ngPrime input  */
 	button,
-	input,
+
 	optgroup,
 	select,
 	textarea {

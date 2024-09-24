@@ -1,16 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import { inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../Environments/environment';
 import { jwtDecode } from 'jwt-decode';
 import { IUser } from '../Interfaces/iuser';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class AuthService {
 	private _HttpClient = inject(HttpClient);
+	private _PLATFORM_ID = inject(PLATFORM_ID);
 	userData = signal({} as IUser);
 
 	signUp(userData: object): Observable<any> {
@@ -49,7 +51,7 @@ export class AuthService {
 	}
 
 	setUserToken(s: string) {
-		if (localStorage !== undefined) {
+		if (isPlatformBrowser(this._PLATFORM_ID)) {
 			localStorage.setItem('userToken', s);
 			this.userData.set(jwtDecode(s));
 		}
@@ -57,7 +59,8 @@ export class AuthService {
 
 	getUserToken() {
 		let t: string | null = null;
-		if (localStorage !== undefined) {
+
+		if (isPlatformBrowser(this._PLATFORM_ID)) {
 			t = localStorage.getItem('userToken');
 			if (t !== null) {
 				this.userData.set(jwtDecode(t));
@@ -67,7 +70,7 @@ export class AuthService {
 	}
 
 	deleteUserToken() {
-		if (localStorage !== undefined) {
+		if (isPlatformBrowser(this._PLATFORM_ID)) {
 			localStorage.removeItem('userToken');
 		}
 	}

@@ -8,7 +8,7 @@ export const headerInterceptor: HttpInterceptorFn = (req, next) => {
 	if (h !== null) {
 		req = req.clone({
 			setHeaders: {
-				token: h,
+				token: h	,
 			},
 		});
 	}

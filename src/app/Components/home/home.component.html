@@ -1,6 +1,7 @@
 <section class="p-3">
-  <div class="bg-white shadow border border-slate-200 rounded-lg">
-    <div class="navigation-wrapper">
+	<h2 class="text-center mb-4 text-3xl">Popular Suggested Catagories</h2>
+	<div class="bg-white shadow border border-slate-200 rounded-lg">
+		<!-- <div class="navigation-wrapper">
       <div class="keen-slider" #sliderRef>
         @if (isLoading) { @for (i of [1,2,3,4,5,6,7]; track $index) {
         <div class="keen-slider__slide cursor-pointer mt-3">
@@ -36,7 +37,25 @@
         </div>
         } }
       </div>
-    </div>
-  </div>
+    </div> -->
+		<swiper-container class="mySwiper" init="false">
+			@for (item of products; track item._id) {
+			<swiper-slide class="cursor-pointer">
+				<div class="flex justify-center items-center flex-wrap">
+					<div
+						class="flex justify-center items-center rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 p-1"
+					>
+						<img
+							[src]="item.image"
+							class="size-40 object-cover object-center rounded-full"
+							[alt]="item.name"
+						/>
+					</div>
+				</div>
+				<p class="text-center w-full">{{ item.name }}</p>
+			</swiper-slide>
+			}
+		</swiper-container>
+	</div>
 </section>
 <app-products></app-products>

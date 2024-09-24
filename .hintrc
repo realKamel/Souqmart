@@ -1,6 +1,14 @@
 {
-	"extends": ["development"],
-	"hints": {
-		"detect-css-reflows/layout": "error"
-	}
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "detect-css-reflows/layout": "error",
+    "axe/text-alternatives": [
+      "default",
+      {
+        "image-alt": "off"
+      }
+    ]
+  }
 }

@@ -15,6 +15,7 @@ import {
 } from '@angular/common/http';
 import { errorInterceptor } from './Interceptors/error.interceptor';
 import { provideToastr } from 'ngx-toastr';
+import { register } from 'swiper/element';
 
 export const appConfig: ApplicationConfig = {
 	providers: [

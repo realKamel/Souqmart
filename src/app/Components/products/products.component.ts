@@ -21,7 +21,7 @@ import { WishlistService } from '../../Services/wishlist.service';
 	templateUrl: './products.component.html',
 	styleUrl: './products.component.css',
 })
-export class ProductsComponent implements OnInit, OnDestroy {
+export class ProductsComponent implements  OnDestroy {
 	//TODO: add wishlist services
 	readonly _ProductsService = inject(ProductsService);
 	readonly _WishlistService = inject(WishlistService);
@@ -31,7 +31,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
 	readonly Products: WritableSignal<IProduct[]> = signal([]);
 	readonly wishListIds = new Set<string>();
 
-	ngOnInit(): void {
+	/* ngOnInit(): void {
 		this.isLoading = true;
 
 		forkJoin({
@@ -58,7 +58,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
 					);
 				},
 			});
-	}
+	} */
 	ngOnDestroy(): void {
 		this.destroy$.next();
 		this.destroy$.complete();

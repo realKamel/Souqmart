@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { environment } from '../Environments/environment';
 import { AuthService } from './auth.service';
 
@@ -10,6 +10,7 @@ import { AuthService } from './auth.service';
 })
 export class WishlistService {
 	private readonly _HttpClient = inject(HttpClient);
+	private readonly _PLATFORM_ID = inject(PLATFORM_ID);
 	private readonly _AuthService = inject(AuthService);
 	private readonly userHeader = this._AuthService.getUserToken();
 	inWishListProudctsIds: string[] = [];
