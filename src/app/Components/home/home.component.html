@@ -1,45 +1,31 @@
 <section class="p-3">
 	<h2 class="text-center mb-4 text-3xl">Popular Suggested Catagories</h2>
 	<div class="bg-white shadow border border-slate-200 rounded-lg">
-		<!-- <div class="navigation-wrapper">
-      <div class="keen-slider" #sliderRef>
-        @if (isLoading) { @for (i of [1,2,3,4,5,6,7]; track $index) {
-        <div class="keen-slider__slide cursor-pointer mt-3">
-          <div class="flex justify-center items-center flex-wrap">
-            <div class="flex justify-center items-center rounded-full p-1">
-              <div
-                class="grid size-40 animate-pulse place-items-center rounded-lg bg-gray-300"
-              >
-                <i class="fa-regular fa-image fa-3x"></i>
-              </div>
-            </div>
-            <div
-              class="block w-40 h-5 mb-4 font-sans text-5xl antialiased font-semibold leading-tight tracking-normal bg-gray-300 rounded-full text-inherit"
-            >
-              &nbsp;
-            </div>
-          </div>
-        </div>
-        } }@else { @for (item of products; track item._id) {
-        <div class="keen-slider__slide cursor-pointer mt-3">
-          <div class="flex justify-center items-center flex-wrap">
-            <div
-              class="flex justify-center items-center rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 p-1"
-            >
-              <img
-                [src]="item.image"
-                class="size-40 object-cover object-center rounded-full"
-                [alt]="item.name"
-              />
-            </div>
-            <p class="text-center w-full">{{ item.name }}</p>
-          </div>
-        </div>
-        } }
-      </div>
-    </div> -->
-		<swiper-container class="mySwiper" init="false">
-			@for (item of products; track item._id) {
+		@if (isLoading()) {
+		<swiper-container
+			class="p-4"
+			space-between="30"
+			slides-per-view="3"
+			freeMode="true"
+			scrollbar-hide="false"
+		>
+			<div class="grid grid-cols-5 justify-center items-center"></div>
+			@for (i of [1,2,3,4,5,6,7,8,9]; track $index) {
+			<swiper-slide class="cursor-pointer">
+				<div class="flex justify-center gap-2">
+					<p-skeleton shape="circle" size="7rem" />
+					<p-skeleton
+						height="2rem"
+						styleClass="mb-2 block"
+						borderRadius="16px"
+					/>
+				</div>
+			</swiper-slide>
+			}
+		</swiper-container>
+		}@else {
+		<swiper-container class="mySwiper py-3">
+			@for (item of categorySlider(); track item._id) {
 			<swiper-slide class="cursor-pointer">
 				<div class="flex justify-center items-center flex-wrap">
 					<div
@@ -47,7 +33,7 @@
 					>
 						<img
 							[src]="item.image"
-							class="size-40 object-cover object-center rounded-full"
+							class="size-24 md:size-40 object-cover object-center rounded-full"
 							[alt]="item.name"
 						/>
 					</div>
@@ -56,6 +42,7 @@
 			</swiper-slide>
 			}
 		</swiper-container>
+		}
 	</div>
 </section>
 <app-products></app-products>

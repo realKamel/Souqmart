@@ -10,11 +10,19 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../Services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { finalize, Subject, takeUntil } from 'rxjs';
+import { InputGroupModule } from 'primeng/inputgroup';
+import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 
 @Component({
 	selector: 'app-log-in',
 	standalone: true,
-	imports: [RouterLink, ReactiveFormsModule, NgClass],
+	imports: [
+		RouterLink,
+		ReactiveFormsModule,
+		NgClass,
+		InputGroupAddonModule,
+		InputGroupModule,
+	],
 	templateUrl: './log-in.component.html',
 	styleUrl: './log-in.component.css',
 })
@@ -24,7 +32,6 @@ export class LogInComponent implements OnDestroy {
 	readonly _Router = inject(Router);
 	isLoading = signal(false);
 	private destroy$ = new Subject<void>();
-
 	loginForm: FormGroup = new FormGroup({
 		email: new FormControl(null, [Validators.required, Validators.email]),
 		password: new FormControl(null, [

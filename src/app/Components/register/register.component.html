@@ -17,44 +17,33 @@
 					(ngSubmit)="registerUser()"
 				>
 					<div>
-						<div class="relative">
+						<p-inputGroup
+							class="rounded border-2"
+							[ngClass]="{
+								'text-red-700  border-red-600 focus:border-red-600':
+									(registerForm.get('name')?.errors &&
+										registerForm.get('name')?.touched) ||
+									(registerForm.get('name')?.errors &&
+										registerForm.get('name')?.dirty),
+								'border-gray-300  focus:border-blue-600': !(
+									(registerForm.get('name')?.errors &&
+										registerForm.get('name')?.touched) ||
+									(registerForm.get('name')?.errors &&
+										registerForm.get('name')?.dirty)
+								)
+							}"
+						>
+							<p-inputGroupAddon>
+								<i class="pi pi-user"></i>
+							</p-inputGroupAddon>
 							<input
 								formControlName="name"
-								type="text"
-								id="floating_name"
-								class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-								placeholder=" "
-								[ngClass]="{
-									'dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:border-red-600':
-										(registerForm.get('name')?.errors &&
-											registerForm.get('name')
-												?.touched) ||
-										(registerForm.get('name')?.errors &&
-											registerForm.get('name')?.dirty),
-									'border-gray-300 dark:border-gray-600 dark:focus:border-blue-500 focus:border-blue-600':
-										!(
-											(registerForm.get('name')?.errors &&
-												registerForm.get('name')
-													?.touched) ||
-											(registerForm.get('name')?.errors &&
-												registerForm.get('name')?.dirty)
-										)
-								}"
+								pInputText
+								placeholder="Your name"
+								class="w-full text-lg outline-none text-inherit border-inherit"
 							/>
-							<label
-								for="floating_name"
-								[ngClass]="{
-									'text-red-600 dark:text-red-800  peer-focus:text-red-600 peer-focus:dark:text-red-500':
-										(registerForm.get('name')?.errors &&
-											registerForm.get('name')
-												?.touched) ||
-										(registerForm.get('name')?.errors &&
-											registerForm.get('name')?.dirty)
-								}"
-								class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-								>Your name</label
-							>
-						</div>
+						</p-inputGroup>
+
 						@if ((registerForm.get('name')?.errors&&
 						registerForm.get('name')?.touched)||(registerForm.get('name')?.errors&&
 						registerForm.get('name')?.dirty)) {
@@ -77,48 +66,35 @@
 						</p>
 						}
 					</div>
+
 					<div>
-						<div class="relative">
+						<p-inputGroup
+							class="rounded border-2"
+							[ngClass]="{
+								'text-red-700  border-red-600 focus:border-red-600':
+									(registerForm.get('email')?.errors &&
+										registerForm.get('email')?.touched) ||
+									(registerForm.get('email')?.errors &&
+										registerForm.get('email')?.dirty),
+								'border-gray-300  focus:border-blue-600': !(
+									(registerForm.get('email')?.errors &&
+										registerForm.get('email')?.touched) ||
+									(registerForm.get('email')?.errors &&
+										registerForm.get('email')?.dirty)
+								)
+							}"
+						>
+							<p-inputGroupAddon>
+								<i class="pi pi-at"></i>
+							</p-inputGroupAddon>
 							<input
 								formControlName="email"
-								type="email"
-								id="floating_email"
-								class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-								placeholder=" "
-								[ngClass]="{
-									'dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:border-red-600':
-										(registerForm.get('email')?.errors &&
-											registerForm.get('email')
-												?.touched) ||
-										(registerForm.get('email')?.errors &&
-											registerForm.get('email')?.dirty),
-									'border-gray-300 dark:border-gray-600 dark:focus:border-blue-500 focus:border-blue-600':
-										!(
-											(registerForm.get('email')
-												?.errors &&
-												registerForm.get('email')
-													?.touched) ||
-											(registerForm.get('email')
-												?.errors &&
-												registerForm.get('email')
-													?.dirty)
-										)
-								}"
+								pInputText
+								placeholder="Your email"
+								class="w-full text-lg outline-none text-inherit border-inherit"
 							/>
-							<label
-								for="floating_email"
-								[ngClass]="{
-									'text-red-600 dark:text-red-800  peer-focus:text-red-600 peer-focus:dark:text-red-500':
-										(registerForm.get('email')?.errors &&
-											registerForm.get('email')
-												?.touched) ||
-										(registerForm.get('email')?.errors &&
-											registerForm.get('email')?.dirty)
-								}"
-								class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-								>Your email</label
-							>
-						</div>
+						</p-inputGroup>
+
 						@if ((registerForm.get('email')?.errors&&
 						registerForm.get('email')?.touched)||(registerForm.get('email')?.errors&&
 						registerForm.get('email')?.dirty)) {
@@ -138,15 +114,23 @@
 						</p>
 						}
 					</div>
+
 					<div>
-						<div class="relative">
-							<input
-								formControlName="password"
-								type="password"
-								autocomplete
+						<div class="w-full relative">
+							<div
+								class="absolute flex justify-center items-center top-0 bottom-0 left-0 right-[89%] rounded-s bg-gray-100 z-20 border-y-2 border-s-2 border-gray-300"
+							>
+								<span
+									class="pi pi-key block text-gray-500"
+								></span>
+							</div>
+							<p-password
+								[toggleMask]="true"
 								id="floating_password"
-								class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-								placeholder=" "
+								styleClass="w-full  border-2 border-gray-300 rounded"
+								inputStyleClass="text-medium ps-12 w-full"
+								formControlName="password"
+								placeholder="Your Password"
 								[ngClass]="{
 									'dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:border-red-600':
 										(registerForm.get('password')?.errors &&
@@ -167,49 +151,64 @@
 													?.dirty)
 										)
 								}"
-							/>
-							<label
-								for="floating_password"
-								[ngClass]="{
-									'text-red-600 dark:text-red-800  peer-focus:text-red-600 peer-focus:dark:text-red-500':
-										(registerForm.get('password')?.errors &&
-											registerForm.get('password')
-												?.touched) ||
-										(registerForm.get('password')?.errors &&
-											registerForm.get('password')?.dirty)
-								}"
-								class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-								>Your password</label
 							>
+								<ng-template pTemplate="header">
+									<h6>Pick a password</h6>
+								</ng-template>
+								<ng-template pTemplate="footer">
+									<p-divider />
+
+									@if ((registerForm.get('password')?.errors&&
+									registerForm.get('password')?.touched)||(registerForm.get('password')?.errors&&
+									registerForm.get('password')?.dirty)) {
+									<p class="mt-2">Requirements</p>
+									<ul class="pl-2 ml-2 mt-0 leading-6">
+										@if
+										(registerForm.get('password')?.getError('required'))
+										{
+										<li class="font-medium">
+											<strong>A Must: </strong>Your
+											password is not Empty
+										</li>
+										} @if
+										(registerForm.get('password')?.getError('pattern'))
+										{
+										<li class="font-medium">
+											<strong>A Must: </strong>Your
+											password at least 6 characters
+										</li>
+										}
+									</ul>
+									}
+									<p class="mt-2">Suggestions</p>
+									<ul class="pl-2 ml-2 mt-0 leading-6">
+										<li>At least one lowercase</li>
+										<li>At least one uppercase</li>
+										<li>At least one numeric</li>
+									</ul>
+								</ng-template>
+							</p-password>
 						</div>
-						@if ((registerForm.get('password')?.errors&&
-						registerForm.get('password')?.touched)||(registerForm.get('password')?.errors&&
-						registerForm.get('password')?.dirty)) {
-						<p
-							id="outlined_error_help"
-							class="mt-2 text-xs text-red-600 dark:text-red-400"
-						>
-							@if
-							(registerForm.get('password')?.getError('required'))
-							{<span class="font-medium"
-								>Your password is required</span
-							>} @if
-							(registerForm.get('password')?.getError('pattern'))
-							{<span class="font-medium"
-								>Your password Must at least 6 characters</span
-							>}
-						</p>
-						}
 					</div>
+
 					<div>
-						<div class="relative">
-							<input
+						<div class="relative w-full">
+							<div
+								class="absolute flex justify-center items-center top-0 bottom-0 left-0 right-[89%] rounded-s bg-gray-100 z-20 border-y-2 border-s-2 border-gray-300"
+							>
+								<span
+									class="pi pi-key block text-gray-500"
+								></span>
+							</div>
+							<p-password
+								feedback="false"
 								formControlName="rePassword"
 								autocomplete
-								type="password"
+								styleClass="w-full  border-2 border-gray-300 rounded"
+								inputStyleClass="text-medium ps-12 w-full"
+								[toggleMask]="true"
 								id="floating_rePassword"
-								class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-								placeholder=" "
+								placeholder="Confirm Password"
 								[ngClass]="{
 									'dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:border-red-600':
 										(registerForm.errors &&
@@ -229,20 +228,6 @@
 										)
 								}"
 							/>
-							<label
-								for="floating_rePassword"
-								[ngClass]="{
-									'text-red-600 dark:text-red-800  peer-focus:text-red-600 peer-focus:dark:text-red-500':
-										(registerForm.errors &&
-											registerForm.get('rePassword')
-												?.touched) ||
-										(registerForm.errors &&
-											registerForm.get('rePassword')
-												?.dirty)
-								}"
-								class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-								>Confirm password</label
-							>
 						</div>
 						@if (registerForm.getError('mismatch') &&
 						(registerForm.get('rePassword')?.touched
@@ -257,14 +242,23 @@
 						</p>
 						}
 					</div>
+
 					<div>
 						<div class="relative">
-							<input
+							<div
+								class="absolute flex justify-center items-center top-0 bottom-0 left-0 right-[89%] rounded-s bg-gray-100 z-20 border-y-2 border-s-2 border-gray-300"
+							>
+								<span
+									class="pi pi-phone block text-gray-500"
+								></span>
+							</div>
+							<p-inputMask
+								mask="999-99999999"
+								showClear
+								placeholder="010-14202765"
 								formControlName="phone"
-								type="tel"
 								id="floating_phone"
-								class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-								placeholder=" "
+								styleClass="w-full ps-12 border-2 border-gray-300 rounded"
 								[ngClass]="{
 									'dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:border-red-600':
 										(registerForm.get('phone')?.errors &&
@@ -285,19 +279,6 @@
 										)
 								}"
 							/>
-							<label
-								for="floating_phone"
-								[ngClass]="{
-									'text-red-600 dark:text-red-800  peer-focus:text-red-600 peer-focus:dark:text-red-500':
-										(registerForm.get('phone')?.errors &&
-											registerForm.get('phone')
-												?.touched) ||
-										(registerForm.get('phone')?.errors &&
-											registerForm.get('phone')?.dirty)
-								}"
-								class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-								>Your phone</label
-							>
 						</div>
 						@if ((registerForm.get('phone')?.errors&&
 						registerForm.get('phone')?.touched)||(registerForm.get('phone')?.errors&&
@@ -318,6 +299,7 @@
 						</p>
 						}
 					</div>
+
 					<button
 						type="submit"
 						[disabled]="registerForm.invalid"

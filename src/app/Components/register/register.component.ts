@@ -11,11 +11,24 @@ import { AuthService } from '../../Services/auth.service';
 import { NgClass } from '@angular/common';
 import { finalize, Subject, takeUntil } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-
+import { InputGroupModule } from 'primeng/inputgroup';
+import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+import { PasswordModule } from 'primeng/password';
+import { DividerModule } from 'primeng/divider';
+import { InputMaskModule } from 'primeng/inputmask';
 @Component({
 	selector: 'app-register',
 	standalone: true,
-	imports: [RouterLink, ReactiveFormsModule, NgClass],
+	imports: [
+		RouterLink,
+		ReactiveFormsModule,
+		NgClass,
+		InputGroupAddonModule,
+		InputGroupModule,
+		PasswordModule,
+		DividerModule,
+		InputMaskModule,
+	],
 	templateUrl: './register.component.html',
 	styleUrl: './register.component.css',
 })
@@ -43,7 +56,7 @@ export class RegisterComponent implements OnDestroy {
 			rePassword: new FormControl(null, [Validators.minLength(1)]),
 			phone: new FormControl(null, [
 				Validators.required,
-				Validators.pattern(/^01[0125]\d{8}$/),
+				//Validators.pattern(/^01[0125]\d{8}$/),
 			]),
 		},
 		this.passwordMatchValidator
@@ -55,6 +68,7 @@ export class RegisterComponent implements OnDestroy {
 	}
 
 	registerUser() {
+		console.log(this.registerForm.value);
 		if (this.registerForm.valid) {
 			this.isLoading.set(true);
 			this._AuthService
