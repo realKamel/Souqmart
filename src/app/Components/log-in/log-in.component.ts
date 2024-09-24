@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 import { finalize, Subject, takeUntil } from 'rxjs';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+import { PasswordModule } from 'primeng/password';
 
 @Component({
 	selector: 'app-log-in',
@@ -22,6 +23,7 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 		NgClass,
 		InputGroupAddonModule,
 		InputGroupModule,
+		PasswordModule,
 	],
 	templateUrl: './log-in.component.html',
 	styleUrl: './log-in.component.css',
@@ -40,6 +42,7 @@ export class LogInComponent implements OnDestroy {
 		]),
 	});
 	loginUser(): void {
+		console.log(this.loginForm.value);
 		if (this.loginForm.valid) {
 			this.isLoading.set(true);
 			this._AuthService

@@ -38,42 +38,34 @@
 					[formGroup]="loginForm"
 				>
 					<div>
-						<div class="relative">
+						<p-inputGroup
+							class="rounded border-2"
+							[ngClass]="{
+								'text-red-700  border-red-600 focus:border-red-600':
+									(loginForm.get('email')?.errors &&
+										loginForm.get('email')?.touched) ||
+									(loginForm.get('email')?.errors &&
+										loginForm.get('email')?.dirty),
+								'border-gray-300  focus:border-blue-600': !(
+									(loginForm.get('email')?.errors &&
+										loginForm.get('email')?.touched) ||
+									(loginForm.get('email')?.errors &&
+										loginForm.get('email')?.dirty)
+								)
+							}"
+						>
+							<p-inputGroupAddon>
+								<i class="pi pi-at"></i>
+							</p-inputGroupAddon>
 							<input
 								formControlName="email"
-								type="email"
-								id="floating_email"
-								class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-								placeholder=" "
-								[ngClass]="{
-									'dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:border-red-600':
-										(loginForm.get('email')?.errors &&
-											loginForm.get('email')?.touched) ||
-										(loginForm.get('email')?.errors &&
-											loginForm.get('email')?.dirty),
-									'border-gray-300 dark:border-gray-600 dark:focus:border-blue-500 focus:border-blue-600':
-										!(
-											(loginForm.get('email')?.errors &&
-												loginForm.get('email')
-													?.touched) ||
-											(loginForm.get('email')?.errors &&
-												loginForm.get('email')?.dirty)
-										)
-								}"
+								pInputText
+								autocomplete
+								placeholder="Your email"
+								class="w-full text-lg outline-none text-inherit border-inherit"
 							/>
-							<label
-								for="floating_email"
-								[ngClass]="{
-									'text-red-600 dark:text-red-800  peer-focus:text-red-600 peer-focus:dark:text-red-500':
-										(loginForm.get('email')?.errors &&
-											loginForm.get('email')?.touched) ||
-										(loginForm.get('email')?.errors &&
-											loginForm.get('email')?.dirty)
-								}"
-								class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-								>Your email</label
-							>
-						</div>
+						</p-inputGroup>
+
 						@if ((loginForm.get('email')?.errors&&
 						loginForm.get('email')?.touched)||(loginForm.get('email')?.errors&&
 						loginForm.get('email')?.dirty)) {
@@ -93,47 +85,39 @@
 					</div>
 
 					<div>
-						<div class="relative">
-							<input
-								formControlName="password"
-								type="password"
-								autocomplete
-								id="floating_password"
-								class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-								placeholder=" "
-								[ngClass]="{
-									'dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:border-red-600':
-										(loginForm.get('password')?.errors &&
-											loginForm.get('password')
-												?.touched) ||
-										(loginForm.get('password')?.errors &&
-											loginForm.get('password')?.dirty),
-									'border-gray-300 dark:border-gray-600 dark:focus:border-blue-500 focus:border-blue-600':
-										!(
-											(loginForm.get('password')
-												?.errors &&
-												loginForm.get('password')
-													?.touched) ||
-											(loginForm.get('password')
-												?.errors &&
-												loginForm.get('password')
-													?.dirty)
-										)
-								}"
-							/>
-							<label
-								for="floating_password"
-								[ngClass]="{
-									'text-red-600 dark:text-red-800  peer-focus:text-red-600 peer-focus:dark:text-red-500':
-										(loginForm.get('password')?.errors &&
-											loginForm.get('password')
-												?.touched) ||
-										(loginForm.get('password')?.errors &&
-											loginForm.get('password')?.dirty)
-								}"
-								class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-								>Your password</label
+						<div
+							class="rounded border-2 relative"
+							[ngClass]="{
+								'text-red-700  border-red-600 focus:border-red-600':
+									(loginForm.get('password')?.errors &&
+										loginForm.get('password')?.touched) ||
+									(loginForm.get('password')?.errors &&
+										loginForm.get('password')?.dirty),
+								'border-gray-300  focus:border-blue-600': !(
+									(loginForm.get('password')?.errors &&
+										loginForm.get('password')?.touched) ||
+									(loginForm.get('password')?.errors &&
+										loginForm.get('password')?.dirty)
+								)
+							}"
+						>
+							<div
+								class="absolute flex justify-center items-center top-0 bottom-0 left-0 right-[89%] rounded-s bg-gray-100 z-20 border-y-1 border-s-1 border-gray-300"
 							>
+								<span
+									class="pi pi-key block text-gray-500 focus:border-transparent"
+								></span>
+							</div>
+							<p-password
+								feedback="false"
+								formControlName="password"
+								autocomplete
+								styleClass="w-full rounded border-0"
+								inputStyleClass="text-medium focus:ring-0 outline-none text-inherit focus:bg-transparent  border-0 focus:border-0 ps-[3.2rem] w-full"
+								[toggleMask]="true"
+								id="floating_password"
+								placeholder="Your Password"
+							/>
 						</div>
 						@if ((loginForm.get('password')?.errors&&
 						loginForm.get('password')?.touched)||(loginForm.get('password')?.errors&&
@@ -149,7 +133,8 @@
 							>} @if
 							(loginForm.get('password')?.getError('pattern'))
 							{<span class="font-medium"
-								>Your password Must at least 6 characters</span
+								>Your password Must be at least 6
+								characters</span
 							>}
 						</p>
 						}

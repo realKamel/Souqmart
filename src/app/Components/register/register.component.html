@@ -116,9 +116,27 @@
 					</div>
 
 					<div>
-						<div class="w-full relative">
+						<div
+							class="w-full relative border-2 border-gray-300 rounded"
+							[ngClass]="{
+								'border-red-600 outline-transparent text-red-600 focus:border-red-600':
+									(registerForm.get('password')?.errors &&
+										registerForm.get('password')
+											?.touched) ||
+									(registerForm.get('password')?.errors &&
+										registerForm.get('password')?.dirty),
+								'border-gray-300 dark:border-gray-600 dark:focus:border-blue-500 focus:border-blue-600':
+									!(
+										(registerForm.get('password')?.errors &&
+											registerForm.get('password')
+												?.touched) ||
+										(registerForm.get('password')?.errors &&
+											registerForm.get('password')?.dirty)
+									)
+							}"
+						>
 							<div
-								class="absolute flex justify-center items-center top-0 bottom-0 left-0 right-[89%] rounded-s bg-gray-100 z-20 border-y-2 border-s-2 border-gray-300"
+								class="absolute flex justify-center items-center top-0 bottom-0 left-0 right-[89%] rounded-s bg-gray-100 z-20 border-y-1 border-s-1 border-gray-300"
 							>
 								<span
 									class="pi pi-key block text-gray-500"
@@ -127,37 +145,16 @@
 							<p-password
 								[toggleMask]="true"
 								id="floating_password"
-								styleClass="w-full  border-2 border-gray-300 rounded"
-								inputStyleClass="text-medium ps-12 w-full"
+								styleClass="w-full border-1 border-gray-300 rounded"
+								inputStyleClass="text-medium ps-12 w-full focus:ring-0"
 								formControlName="password"
 								placeholder="Your Password"
-								[ngClass]="{
-									'dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:border-red-600':
-										(registerForm.get('password')?.errors &&
-											registerForm.get('password')
-												?.touched) ||
-										(registerForm.get('password')?.errors &&
-											registerForm.get('password')
-												?.dirty),
-									'border-gray-300 dark:border-gray-600 dark:focus:border-blue-500 focus:border-blue-600':
-										!(
-											(registerForm.get('password')
-												?.errors &&
-												registerForm.get('password')
-													?.touched) ||
-											(registerForm.get('password')
-												?.errors &&
-												registerForm.get('password')
-													?.dirty)
-										)
-								}"
 							>
 								<ng-template pTemplate="header">
 									<h6>Pick a password</h6>
 								</ng-template>
 								<ng-template pTemplate="footer">
 									<p-divider />
-
 									@if ((registerForm.get('password')?.errors&&
 									registerForm.get('password')?.touched)||(registerForm.get('password')?.errors&&
 									registerForm.get('password')?.dirty)) {
@@ -166,14 +163,14 @@
 										@if
 										(registerForm.get('password')?.getError('required'))
 										{
-										<li class="font-medium">
+										<li class="font-medium text-red-500">
 											<strong>A Must: </strong>Your
 											password is not Empty
 										</li>
 										} @if
 										(registerForm.get('password')?.getError('pattern'))
 										{
-										<li class="font-medium">
+										<li class="font-medium text-red-500">
 											<strong>A Must: </strong>Your
 											password at least 6 characters
 										</li>
@@ -192,41 +189,42 @@
 					</div>
 
 					<div>
-						<div class="relative w-full">
+						<div
+							class="relative w-full border-2 border-gray-300 rounded"
+							[ngClass]="{
+								'border-red-600 border-1 text-red-600 focus:border-red-600':
+									(registerForm.errors &&
+										registerForm.get('rePassword')
+											?.touched) ||
+									(registerForm.errors &&
+										registerForm.get('rePassword')?.dirty),
+								'border-gray-300 text-gray-400 focus:border-blue-600':
+									!(
+										(registerForm.errors &&
+											registerForm.get('rePassword')
+												?.touched) ||
+										(registerForm.errors &&
+											registerForm.get('rePassword')
+												?.dirty)
+									)
+							}"
+						>
 							<div
-								class="absolute flex justify-center items-center top-0 bottom-0 left-0 right-[89%] rounded-s bg-gray-100 z-20 border-y-2 border-s-2 border-gray-300"
+								class="absolute flex justify-center items-center top-0 bottom-0 left-0 right-[89%] rounded-s bg-gray-100 z-20 border-y-1 border-s-1 border-gray-300"
 							>
 								<span
-									class="pi pi-key block text-gray-500"
+									class="pi pi-key block text-gray-500 focus:border-transparent"
 								></span>
 							</div>
 							<p-password
 								feedback="false"
 								formControlName="rePassword"
 								autocomplete
-								styleClass="w-full  border-2 border-gray-300 rounded"
-								inputStyleClass="text-medium ps-12 w-full"
+								styleClass="w-full rounded"
+								inputStyleClass="text-medium focus:ring-0 outline-none focus:bg-transparent focus:border-transparent text-inherit ps-12 w-full"
 								[toggleMask]="true"
 								id="floating_rePassword"
 								placeholder="Confirm Password"
-								[ngClass]="{
-									'dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:border-red-600':
-										(registerForm.errors &&
-											registerForm.get('rePassword')
-												?.touched) ||
-										(registerForm.errors &&
-											registerForm.get('rePassword')
-												?.dirty),
-									'border-gray-300 dark:border-gray-600 dark:focus:border-blue-500 focus:border-blue-600':
-										!(
-											(registerForm.errors &&
-												registerForm.get('rePassword')
-													?.touched) ||
-											(registerForm.errors &&
-												registerForm.get('rePassword')
-													?.dirty)
-										)
-								}"
 							/>
 						</div>
 						@if (registerForm.getError('mismatch') &&
@@ -244,40 +242,38 @@
 					</div>
 
 					<div>
-						<div class="relative">
+						<div
+							class="relative w-full border-2 border-gray-300 rounded"
+							[ngClass]="{
+								'border-red-600 border-1 text-red-600 focus:border-red-600':
+									(registerForm.get('phone')?.errors &&
+										registerForm.get('phone')?.touched) ||
+									(registerForm.get('phone')?.errors &&
+										registerForm.get('phone')?.dirty),
+								'border-gray-300 dark:border-gray-600 dark:focus:border-blue-500 focus:border-blue-600':
+									!(
+										(registerForm.get('phone')?.errors &&
+											registerForm.get('phone')
+												?.touched) ||
+										(registerForm.get('phone')?.errors &&
+											registerForm.get('phone')?.dirty)
+									)
+							}"
+						>
 							<div
-								class="absolute flex justify-center items-center top-0 bottom-0 left-0 right-[89%] rounded-s bg-gray-100 z-20 border-y-2 border-s-2 border-gray-300"
+								class="absolute flex justify-center items-center top-0 bottom-0 left-0 right-[89%] rounded-s bg-gray-100 z-20 border-y-1 border-s-1 border-gray-300"
 							>
 								<span
 									class="pi pi-phone block text-gray-500"
 								></span>
 							</div>
 							<p-inputMask
-								mask="999-99999999"
+								mask="99999999999"
 								showClear
 								placeholder="010-14202765"
 								formControlName="phone"
 								id="floating_phone"
-								styleClass="w-full ps-12 border-2 border-gray-300 rounded"
-								[ngClass]="{
-									'dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:border-red-600':
-										(registerForm.get('phone')?.errors &&
-											registerForm.get('phone')
-												?.touched) ||
-										(registerForm.get('phone')?.errors &&
-											registerForm.get('phone')?.dirty),
-									'border-gray-300 dark:border-gray-600 dark:focus:border-blue-500 focus:border-blue-600':
-										!(
-											(registerForm.get('phone')
-												?.errors &&
-												registerForm.get('phone')
-													?.touched) ||
-											(registerForm.get('phone')
-												?.errors &&
-												registerForm.get('phone')
-													?.dirty)
-										)
-								}"
+								styleClass="w-full ps-12 border-1 focus:ring-0 border-gray-300 rounded"
 							/>
 						</div>
 						@if ((registerForm.get('phone')?.errors&&
